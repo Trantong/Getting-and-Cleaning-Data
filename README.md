@@ -100,7 +100,7 @@ sub.FeaturesNames<-grep("mean\\(\\)|std\\(\\)", FeaturesNames$V2)
 finaldata<-cbind(data.merge[,sub.FeaturesNames], subject=data.merge$subject, activity=data.merge$activity)   
 
 #5.Appropriately labels the data set with descriptive variable names
-activityLabels <- read.table("./data/UCI HAR Dataset/activity_labels.txt",header = FALSE)    
+activityLabels <-read.table("./data/UCI HAR Dataset/activity_labels.txt",header = FALSE)    
 finaldata$activity<-factor(finaldata$activity,labels=c("WALKING","WALKING_UPSTAIRS","WALKING_DOWNSTAIRS","SITTING","STANDING","LAYING"), ordered=is.ordered(finaldata$activity))   
 names(finaldata)<-gsub("^t", "time", names(finaldata))    
 names(finaldata)<-gsub("^f", "frequency", names(finaldata))   
