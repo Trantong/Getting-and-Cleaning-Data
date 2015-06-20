@@ -67,32 +67,32 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 #1.Get the data
 ####Download the file and put the file in the data folder and unzip the file
 if(!file.exists("./data")){dir.create("./data")}                            
-fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"                                      
-download.file(fileUrl,destfile="./data/Dataset.zip",method="libcurl")
-unzip(zipfile="./data/Dataset.zip",exdir="./data")
+fileUrl<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"                                        
+download.file(fileUrl,destfile="./data/Dataset.zip",method="libcurl")    
+unzip(zipfile="./data/Dataset.zip",exdir="./data")    
 ####Get the list of unzipped files
-files<-list.files("./data/UCI HAR Dataset", recursive=TRUE)
+files<-list.files("./data/UCI HAR Dataset", recursive=TRUE)   
 files
 
 #2.Merges the training and the test sets to create one data set
 ####Read and merge Fearures files
-x.train<-read.table("./data/UCI HAR Dataset/train/X_train.txt",header = FALSE)
-x.test<-read.table("./data/UCI HAR Dataset/test/X_test.txt",header = FALSE)
-x.merge<-rbind(x.train, x.test)
+x.train<-read.table("./data/UCI HAR Dataset/train/X_train.txt",header = FALSE)     
+x.test<-read.table("./data/UCI HAR Dataset/test/X_test.txt",header = FALSE)      
+x.merge<-rbind(x.train, x.test)    
 ####Read and merge subject files
-subject.train <- read.table("./data/UCI HAR Dataset/train/subject_train.txt",header = FALSE)
-subject.test <- read.table("./data/UCI HAR Dataset/test/subject_test.txt",header = FALSE)
-subject.merge <- rbind(subject.train, subject.test)
-#### Read and merge activity files
-y.train <- read.table("./data/UCI HAR Dataset/train/y_train.txt",header = FALSE)
-y.test <- read.table("./data/UCI HAR Dataset/test/y_test.txt",header = FALSE)
-y.merge<- rbind(y.train, y.test)
+subject.train <- read.table("./data/UCI HAR Dataset/train/subject_train.txt",header = FALSE)   
+subject.test <- read.table("./data/UCI HAR Dataset/test/subject_test.txt",header = FALSE)   
+subject.merge <- rbind(subject.train, subject.test)   
+#### Read and merge activity files  
+y.train <- read.table("./data/UCI HAR Dataset/train/y_train.txt",header = FALSE)  
+y.test <- read.table("./data/UCI HAR Dataset/test/y_test.txt",header = FALSE)  
+y.merge<- rbind(y.train, y.test)   
 
 #3.Set names to variables
-names(subject.merge)<-c("subject")                                                         
-names(y.merge)<- c("activity")   
-FeaturesNames <- read.table("./data/UCI HAR Dataset/features.txt",head=FALSE)   
-names(x.merge)<- FeaturesNames$V2   
+names(subject.merge)<-c("subject")                                                            
+names(y.merge)<- c("activity")      
+FeaturesNames <- read.table("./data/UCI HAR Dataset/features.txt",head=FALSE)     
+names(x.merge)<- FeaturesNames$V2     
 data.merge<-cbind(x.merge,y.merge,subject.merge)    
 
 #4.Extracts only the measurements on the mean and standard deviation for each measurement
