@@ -72,7 +72,7 @@ download.file(fileUrl,destfile="./data/Dataset.zip",method="libcurl")
 unzip(zipfile="./data/Dataset.zip",exdir="./data")    
 ####Get the list of unzipped files
 files<-list.files("./data/UCI HAR Dataset", recursive=TRUE)   
-files
+files    
 [1] "activity_labels.txt"                          "features.txt"                                
  [3] "features_info.txt"                            "README.txt"                                  
  [5] "test/Inertial Signals/body_acc_x_test.txt"    "test/Inertial Signals/body_acc_y_test.txt"   
@@ -93,7 +93,7 @@ files
 x.train<-read.table("./data/UCI HAR Dataset/train/X_train.txt",header = FALSE)     
 x.test<-read.table("./data/UCI HAR Dataset/test/X_test.txt",header = FALSE)      
 x.merge<-rbind(x.train, x.test)  
-names(x.merge)
+names(x.merge)     
  [1] "V1"   "V2"   "V3"   "V4"   "V5"   "V6"   "V7"   "V8"   "V9"   "V10"  "V11"  "V12"  "V13"  "V14"  "V15" 
  [16] "V16"  "V17"  "V18"  "V19"  "V20"  "V21"  "V22"  "V23"  "V24"  "V25"  "V26"  "V27"  "V28"  "V29"  "V30" 
  [31] "V31"  "V32"  "V33"  "V34"  "V35"  "V36"  "V37"  "V38"  "V39"  "V40"  "V41"  "V42"  "V43"  "V44"  "V45" 
@@ -137,14 +137,14 @@ names(x.merge)
 subject.train <- read.table("./data/UCI HAR Dataset/train/subject_train.txt",header = FALSE)   
 subject.test <- read.table("./data/UCI HAR Dataset/test/subject_test.txt",header = FALSE)   
 subject.merge <- rbind(subject.train, subject.test) 
-names(subject.merge)
+names(subject.merge)                              
 [1] "V1"
 
 #### Read and merge activity files  
 y.train <- read.table("./data/UCI HAR Dataset/train/y_train.txt",header = FALSE)  
 y.test <- read.table("./data/UCI HAR Dataset/test/y_test.txt",header = FALSE)  
 y.merge<- rbind(y.train, y.test)   
-names(y.merge)
+names(y.merge)    
 [1] "V1"
 
 #3.Set names to variables
@@ -152,8 +152,8 @@ names(subject.merge)<-c("subject")
 names(y.merge)<- c("activity")      
 FeaturesNames <- read.table("./data/UCI HAR Dataset/features.txt",head=FALSE)     
 names(x.merge)<- FeaturesNames$V2     
-data.merge<-cbind(x.merge,y.merge,subject.merge)    
-names(data.merge)
+data.merge<-cbind(x.merge,y.merge,subject.merge)       
+names(data.merge)      
   [1] "tBodyAcc-mean()-X"                    "tBodyAcc-mean()-Y"                   
   [3] "tBodyAcc-mean()-Z"                    "tBodyAcc-std()-X"                    
   [5] "tBodyAcc-std()-Y"                     "tBodyAcc-std()-Z"                    
