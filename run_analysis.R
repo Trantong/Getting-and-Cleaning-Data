@@ -1,4 +1,4 @@
-setwd("D:/STUDY/ONLINE COURSES/6. Getting and cleaning data")
+setwd("D:/STUDY/6. ONLINE COURSES/6. Getting and cleaning data")
 
 ##Download the file and put the file in the data folder and unzip the file
 
